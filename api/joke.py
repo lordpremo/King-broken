@@ -1,10 +1,20 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import json, random, os
 
 app = FastAPI(
     title="King Broken Comedy API",
     description="API yenye jokes nyingi sana 😂",
     version="2.0.0"
+)
+
+# Ruhusu CORS (hii ndiyo fix ya HTML yako)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Ruhusu website yoyote
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
